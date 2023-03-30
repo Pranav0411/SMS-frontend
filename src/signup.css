@@ -1,0 +1,14 @@
+.Signup{
+    margin: 200px;
+    text-align: center;
+}
+#one {
+    text-align: center;
+    color: green;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
