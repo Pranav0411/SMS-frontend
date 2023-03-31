@@ -5,28 +5,28 @@ import Base from './base';
 import './signup.css';
 import Validation from './validation';
 import { createleave } from './userService1';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
+import { createMessage } from './userService2';
 
 
 
 
-function ApplyLeave() {
+function Message() {
 
-    const [leave, setLeave] = useState({
+    const [messages, setMessages] = useState({
 
-        name: '',
-        startdate: '',
-        enddate: '',
-        reason:''
+        student: '',
+        teacher: '',
+        message: ''
 
 
     })
 
     const handleChange = (event, property) => {
 
-        setLeave({ ...leave, [property]: event.target.value })
+        setMessages({ ...messages, [property]: event.target.value })
 
 
     }
@@ -36,7 +36,7 @@ function ApplyLeave() {
 
         event.preventDefault();
         console.log("Hello")
-        createleave(leave).then((resp) => {
+        createMessage(messages).then((resp) => {
 
             console.log(resp);
             toast.success("Leave Applied Successfully . ")
@@ -59,7 +59,7 @@ function ApplyLeave() {
                     <Card style={{
                         margin: '100px'
                     }}>
-                        <CardHeader><div id="one"><h3>Apply Leave</h3></div></CardHeader>
+                        <CardHeader><div id="one"><h3>Send Message</h3></div></CardHeader>
                         <CardBody>
                             <Form onSubmit={submitF}>
                                 <FormGroup className="mb-3">
@@ -72,57 +72,44 @@ function ApplyLeave() {
                                         placeholder="Enter Full Name"
                                         type="text"
 
-                                        onChange={(e) => { handleChange(e, 'name') }}
-                                        value={leave.name}
+                                        onChange={(e) => { handleChange(e, 'student') }}
+                                        value={messages.student}
 
                                     />
                                 </FormGroup>
 
                                 <FormGroup className="mb-3">
                                     <Label for="exampleEmail">
-                                        Start date
+                                        Teacher Name
                                     </Label>
                                     <Input
-                                        id="startdate"
-                                        name="startdate"
-                                        placeholder="Enter Start Date in format yyyy-mm-dd"
+                                        id="teacher"
+                                        name="teacher"
+                                        placeholder="Enter Teacher name ."
                                         type="text"
-                                        
-                                        onChange={(e) => { handleChange(e, 'startdate') }}
-                                        value={leave.startdate}
+
+                                        onChange={(e) => { handleChange(e, 'teacher') }}
+                                        value={messages.teacher}
                                     />
                                 </FormGroup>
-                                <FormGroup>
+                                <FormGroup className="mb-3">
                                     <Label for="examplePassword">
-                                        End Date
+                                        Message
                                     </Label>
                                     <Input
-                                        id="enddate"
-                                        name="enddate"
-                                        placeholder="Enter End date in format yyyy-mm-dd"
+                                        id="message"
+                                        name="message"
+                                        placeholder="Enter the Message here"
                                         type="text"
-                                        onChange={(e) => { handleChange(e, 'enddate') }}
-                                        value={leave.enddate}
+                                        onChange={(e) => { handleChange(e, 'message') }}
+                                        value={messages.message}
                                     />
                                 </FormGroup>
 
-                                <FormGroup >
-                                    <Label for="Role">
-                                        Reason
-                                    </Label>
-                                    <Input
-                                        id="reason"
-                                        name="reason"
-                                        placeholder="Enter Reason"
-                                        type="text"
-                                        onChange={(e) => { handleChange(e, 'reason') }}
-                                        value={leave.reason}
-                                    />
-                                </FormGroup>
 
                                 <div className="center">
                                     <Button type="submit">
-                                        Submit
+                                        Send Message
                                     </Button>
                                 </div>
                             </Form>
@@ -133,4 +120,4 @@ function ApplyLeave() {
         </Base>);
 }
 
-export default ApplyLeave;
+export default Message;

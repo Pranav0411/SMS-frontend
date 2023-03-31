@@ -33,31 +33,21 @@ function Example() {
                         height: 40,
                         width: 40
                     }}
-                />SWA</NavbarBrand>
+                />SCHOOL WEB APPLICATION</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
                         <NavItem>
                             <NavLink tag={ReactLink} to="/login">Login</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink tag={ReactLink} to="/signup">
-                                Signup
-                            </NavLink>
-                        </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>Option 1</DropdownItem>
-                                <DropdownItem>Option 2</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Reset</DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                        
+                       
                     </Nav>
-                    <NavbarText>Simple Text</NavbarText>
+                    <Nav>
+                    <NavItem>
+                        <NavLink tag={ReactLink} to="/">Logout</NavLink>
+                        </NavItem>
+                    </Nav>
                 </Collapse>
             </Navbar>
         </div>

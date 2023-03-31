@@ -45,6 +45,7 @@ function Signup() {
         console.log(resp);
             console.log("success");
             toast.success("User Registered Successfully . ")
+            window.location.reload(true);
         }).catch((error) => {
 
             console.log(error);

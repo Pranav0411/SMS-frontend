@@ -90,7 +90,7 @@ function Login() {
                     <Card style={{
                         margin: '100px'
                     }}>
-                        <CardHeader><div id="one"><h3>STUDENT SIGN UP</h3></div></CardHeader>
+                        <CardHeader><div id="one"><h3>LOGIN</h3></div></CardHeader>
                         <CardBody>
                             <Form onSubmit={submitForm} >
 

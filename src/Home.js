@@ -26,8 +26,7 @@ const Home = () => {
             <div margin="20px">
         
                 <Container className="text-center">
-                    <Button color="light" onClick={handleSignup}> Sign Up </Button>
-                <Button  color="dark" className="ms-2" onClick={HandleLogin}> Login </Button>
+                    <Button color="dark" className="ms-2" onClick={HandleLogin} > Login </Button>
                 </Container>
                 
                 <TeacherComp />

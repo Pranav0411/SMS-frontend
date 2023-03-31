@@ -19,8 +19,7 @@ class ListUsers extends React.Component {
 
     editUser(id) {
 
-        const { history } = this.props;
-        history.push(`/update/${id}`);
+        this.context.history.push('/path')
 
     }
 

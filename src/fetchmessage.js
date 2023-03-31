@@ -3,11 +3,11 @@ import React from 'react';
 import './LeaveComp.css';
 import { useEffect, useState } from "react";
 import axios from 'axios';
-function LeaveComp() {
+function Fetchmessage() {
 
     const [data, SetData] = useState([])
-    
-    useEffect(() => { axios.get('http://localhost:9012/api/leaves/getall').then(res => SetData(res.data)).catch(err => console.log(err)) }, [])
+
+    useEffect(() => { axios.get('http://localhost:9013/api/messages/getall').then(res => SetData(res.data)).catch(err => console.log(err)) }, [])
 
 
 
@@ -15,16 +15,16 @@ function LeaveComp() {
 
         <div className="table-wrapper" >
 
-            <h3 className="center">Student Leave List</h3>
+            <h3 className="center">Messages</h3>
 
             <table className="fl-table" >
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">NAME</th>
-                        <th scope="col">FROM</th>
-                        <th scope="col">TO</th>
-                        <th scope="col">REASON</th>
+                        <th scope="col">STUDENT</th>
+                        <th scope="col">TEACHER</th>
+                        <th scope="col">MESSAGE</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +35,10 @@ function LeaveComp() {
                             <tr key={leave.id}>
 
                                 <td>{leave.id}</td>
-                                <td>{leave.name}</td>
-                                <td>{leave.startdate}</td>
-                                <td>{leave.enddate}</td>
-                                <td>{leave.reason}</td>
+                                <td>{leave.student}</td>
+                                <td>{leave.teacher}</td>
+                                <td>{leave.message}</td>
+                                
                             </tr>
 
                         )
@@ -61,4 +61,4 @@ function LeaveComp() {
 
 }
 
-export default LeaveComp;
+export default Fetchmessage;

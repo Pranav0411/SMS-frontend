@@ -7,177 +7,126 @@ import Validation from './validation';
 import { sign } from './userService.js';
 import axios from "axios";
 import Service from "./service";
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+function Update() {
+
+    const { id } = useParams();
+    const [values, setValues] = useState({
+
+        id: id,
+        name: '',
+        email: '',
+        role: '',
+        subject:''
 
 
 
-class Update extends Component {
+    })
+    useEffect(() => {
+        axios.get('http://localhost:9011/api/user/getbyid/' + id)
+            .then(res => { setValues({ ...values, name: res.data.name, email: res.data.email, role: res.data.role, subject: res.data.subject }) })
+            .catch(err => console.log(err))
+    }, [])
 
-    constructor(props) {
+    const navigate = useNavigate();
 
-        super(props)
-
-        this.state = {
-
-            id: this.props.match.params.id,
-            name: '',
-            email: '',
-            role: '',
-            subject: ''
-
-        }
-
-        this.changeName = this.changeName.bind(this);
-        this.changeEmail = this.changeEmail.bind(this);
-        this.changeRole = this.changeRole.bind(this);
-        this.changeSubject = this.changeSubject.bind(this);
-        this.updateuser = this.updateuser.bind(this);
-
-    }
-
-
-
-
-
-
-
-    componentDidMount() {
-        Service.getUserById(this.state.id).then((res) => {
-
-            let user = res.data;
-            this.setState({
-                name: user.name,
-                email: user.email,
-                role: user.role,
-                subject: user.subject
-
-            });
-        });
-    }
-
-    updateuser = (e) => {
+    const handleSubmit = (e) => {
 
         e.preventDefault();
-        let user = {
-
-            name: this.state.name,
-            email: this.state.email,
-            role: this.state.role,
-            subject: this.state.subject
-
-        };
-
+        axios.put('http://localhost:9011/api/user/updateuser/' + id, values).then(res => { navigate('/admin') }).catch(err => console.log(err))
     }
 
+    return (
+        <Base>
+            <Row>
+                <Col sm={{ size: 6, offset: 3 }}>
+                    <Card style={{
+                        margin: '100px'
+                    }}>
+                        <CardHeader><div id="one"><h3>Update</h3></div></CardHeader>
+                        <CardBody>
+                            <Form onSubmit={handleSubmit}>
+                                <FormGroup className="mb-3">
+                                    <Label for="Name">
+                                        Name
+                                    </Label>
+                                    <Input
+                                        id="Name"
+                                        name="Name"
+                                        placeholder="Enter Full Name"
+                                        type="text"
 
-    changeName = (event) => {
+                                        onChange={e => setValues({ ...values, name: e.target.value })}
+                                        value={values.name}
 
-        this.setState({ name: event.target.value });
+                                    />
+                                </FormGroup>
 
-    }
+                                <FormGroup className="mb-3">
+                                    <Label for="Email">
+                                        Email
+                                    </Label>
+                                    <Input
+                                        id="Email"
+                                        name="Email"
+                                        placeholder="Enter Email"
+                                        type="text"
 
-    changeEmail = (event) => {
+                                        onChange={e => setValues({ ...values, email: e.target.value })}
+                                        value={values.email}
 
-        this.setState({ email: event.target.value });
-    }
+                                    />
+                                </FormGroup>
 
-    changeRole = (event) => {
+                                <FormGroup className="mb-3">
+                                    <Label for="Role">
+                                        Role
+                                    </Label>
+                                    <Input
+                                        id="Role"
+                                        name="Role"
+                                        placeholder="Enter role"
+                                        type="text"
 
-        this.setState({ role: event.target.value });
-    }
+                                        onChange={e => setValues({ ...values, role: e.target.value })}
+                                        value={values.role}
 
-    changeSubject = (event) => {
+                                    />
+                                </FormGroup>
 
-        this.setState({ subject: event.target.value });
-    }
+                                <FormGroup className="mb-3">
+                                    <Label for="Subject">
+                                        Subject
+                                    </Label>
+                                    <Input
+                                        id="Subject"
+                                        name="Subject"
+                                        placeholder="Enter subject"
+                                        type="text"
 
-    render() {
-        return (
-            <Base>
-                <Row>
-                    <Col sm={{ size: 6, offset: 3 }}>
-                        <Card style={{
-                            margin: '100px'
-                        }}>
-                            <CardHeader><div id="one"><h3>Update</h3></div></CardHeader>
-                            <CardBody>
-                                <Form >
-                                    <FormGroup className="mb-3">
-                                        <Label for="Name">
-                                            Name
-                                        </Label>
-                                        <Input
-                                            id="Name"
-                                            name="Name"
-                                            placeholder="Enter Full Name"
-                                            type="text"
+                                        onChange={e => setValues({ ...values, subject: e.target.value })}
+                                        value={values.subject}
 
-                                            onChange={this.changeName}
-                                            value={this.state.name}
-
-                                        />
-                                    </FormGroup>
-
-                                    <FormGroup className="mb-3">
-                                        <Label for="Email">
-                                            Email
-                                        </Label>
-                                        <Input
-                                            id="Email"
-                                            name="Email"
-                                            placeholder="Enter Email"
-                                            type="text"
-
-                                            onChange={this.changeEmail}
-                                            value={this.state.email}
-
-                                        />
-                                    </FormGroup>
-
-                                    <FormGroup className="mb-3">
-                                        <Label for="Role">
-                                            Role
-                                        </Label>
-                                        <Input
-                                            id="Role"
-                                            name="Role"
-                                            placeholder="Enter role"
-                                            type="text"
-
-                                            onChange={this.changeRole}
-                                            value={this.state.role}
-
-                                        />
-                                    </FormGroup>
-
-                                    <FormGroup className="mb-3">
-                                        <Label for="Subject">
-                                            Subject
-                                        </Label>
-                                        <Input
-                                            id="Subject"
-                                            name="Subject"
-                                            placeholder="Enter subject"
-                                            type="text"
-
-                                            onChange={this.changeSubject}
-                                            value={this.state.subject}
-
-                                        />
-                                    </FormGroup>
+                                    />
+                                </FormGroup>
 
 
-                                    <div className="center">
-                                        <Button type="submit" onClick={this.updateuser}>
-                                            Update
-                                        </Button>
-                                    </div>
-                                </Form>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
-            </Base>);
-    }
+                                <div className="center">
+                                    <Button type="submit">
+                                        Update
+                                    </Button>
+                                </div>
+                            </Form>
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+        </Base>);
+
 }
 
 export default Update;

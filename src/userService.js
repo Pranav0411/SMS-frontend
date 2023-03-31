@@ -11,5 +11,10 @@ export const loginUser = (loginDetails) => {
     return myAxios.post('/api/user/authenticate', loginDetails).then((response) => response.data);
 }
 
+export const getuserbyid = (id) => {
+
+    return myAxios.get('/api/user/', id).then((response) => response.data);
+}
+
 
 

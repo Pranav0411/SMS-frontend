@@ -4,6 +4,9 @@ import { Button, FormGroup, Label, Input, FormText, Card, CardBody, CardHeader, 
 import Base from './base';
 import { useNavigate } from 'react-router-dom';
 import ListUsers from './ListUsers';
+import Fetchusers from './fetchusers';
+import Fetchmessage from './fetchmessage';
+import LeaveComp from './LeaveComp';
 
 
 
@@ -19,19 +22,7 @@ function Admin() {
 
     }
 
-    const handleUpdateStudent = () => {
-        let path = "./signup";
-        navigate(path);
-
-
-    }
-
-    const handleUpdateTeacher = () => {
-        let path = "./signup";
-        navigate(path);
-
-
-    }
+    
 
 
     return (
@@ -39,15 +30,22 @@ function Admin() {
 
 
         <Base>
+            <div className="text-center">
+
+                <h3>WELCOME TO ADMIN'S PORTAL</h3>
+
+            </div>
+
             <div margin="20px">
 
                 <Container className="text-center" >
                     <Button color="dark" onClick={HandleRegister}> Register </Button>
-                    <Button color="dark" onClick={handleUpdateStudent}> Update Student </Button>
-                    <Button color="dark" onClick={handleUpdateTeacher}> Update Teacher </Button>
+                    
                 </Container>
 
-                <ListUsers />
+                <Fetchusers />
+
+                <LeaveComp />
             </div>
         </Base>
 

@@ -10,6 +10,7 @@ import LeaveComp from './LeaveComp';
 import ApplyLeave from './ApplyLeave';
 import ListUsers from './ListUsers';
 import Update from './Update';
+import Fetchusers from './fetchusers';
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -17,6 +18,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from './Admin';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Message from './Message';
+import Fetchmessage from './fetchmessage';
 
 
 function App() {
@@ -35,7 +38,10 @@ function App() {
                 <Route path="/applyleave" element={<ApplyLeave />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/listusers" element={<ListUsers />} />
-                <Route path="/update/:id" exact component={Update} ></Route>
+                <Route path="/update/:id" element={<Update />}></Route>
+                <Route path="/fetchusers" element={<Fetchusers />} />
+                <Route path="/message" element={<Message />} />
+                <Route path="/fetchmessage" element={<Fetchmessage />} />
                 
             </Routes>
 
