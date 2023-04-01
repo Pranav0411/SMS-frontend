@@ -20,8 +20,8 @@ function Student() {
     }
 
     const handlePayFess = () => {
-        let path = "./signup";
-        navigate(path);
+        
+        navigate("/fees");
 
 
     }

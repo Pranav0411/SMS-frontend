@@ -20,6 +20,8 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Message from './Message';
 import Fetchmessage from './fetchmessage';
+import Fetchfees from './fetchfees';
+import Fees from './Fees';
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
                 <Route path="/fetchusers" element={<Fetchusers />} />
                 <Route path="/message" element={<Message />} />
                 <Route path="/fetchmessage" element={<Fetchmessage />} />
+                <Route path="/fees" element={<Fees />} />
+                <Route path="/fetchfees" element={<Fetchfees />} />
                 
             </Routes>
 

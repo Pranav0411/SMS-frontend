@@ -7,6 +7,7 @@ import ListUsers from './ListUsers';
 import Fetchusers from './fetchusers';
 import Fetchmessage from './fetchmessage';
 import LeaveComp from './LeaveComp';
+import Fetchfees from './fetchfees';
 
 
 
@@ -46,6 +47,8 @@ function Admin() {
                 <Fetchusers />
 
                 <LeaveComp />
+
+                <Fetchfees />
             </div>
         </Base>
 
