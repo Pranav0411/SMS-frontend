@@ -17,6 +17,7 @@ function ApplyLeave() {
     const [leave, setLeave] = useState({
 
         name: '',
+        studentEmail:'',
         startdate: '',
         enddate: '',
         reason:''
@@ -77,6 +78,24 @@ function ApplyLeave() {
 
                                     />
                                 </FormGroup>
+
+
+                                
+                                    <FormGroup className="mb-3">
+                                        <Label for="email">
+                                            Email
+                                        </Label>
+                                        <Input
+                                            id="email"
+                                            name="email"
+                                            placeholder="Enter Email"
+                                            type="text"
+
+                                            onChange={(e) => { handleChange(e, 'studentEmail') }}
+                                            value={leave.studentEmail}
+
+                                        />
+                                    </FormGroup>
 
                                 <FormGroup className="mb-3">
                                     <Label for="exampleEmail">

@@ -17,7 +17,9 @@ function Fees() {
 
     const [fees, setFees] = useState({
 
+       
         name: '',
+        studenEmail: '',
         amount: '',
         paymentid: '',
         feestype:''
@@ -63,6 +65,9 @@ function Fees() {
                         <CardHeader><div id="one"><h3>Pay Fees</h3></div></CardHeader>
                         <CardBody>
                             <Form onSubmit={submitF}>
+
+                                
+
                                 <FormGroup className="mb-3">
                                     <Label for="Name">
                                         Name
@@ -78,6 +83,23 @@ function Fees() {
 
                                     />
                                 </FormGroup>
+
+                                <FormGroup className="mb-3">
+                                    <Label for="email">
+                                        Email
+                                    </Label>
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter Email"
+                                        type="text"
+
+                                        onChange={(e) => { handleChange(e, 'studenEmail') }}
+                                        value={fees.studenEmail}
+
+                                    />
+                                </FormGroup>
+
 
                                 <FormGroup className="mb-3">
                                     <Label for="exampleEmail">

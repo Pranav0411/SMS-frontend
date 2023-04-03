@@ -22,6 +22,7 @@ function LeaveComp() {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">NAME</th>
+                        <th scope="col">EMAIL</th>
                         <th scope="col">FROM</th>
                         <th scope="col">TO</th>
                         <th scope="col">REASON</th>
@@ -36,6 +37,7 @@ function LeaveComp() {
 
                                 <td>{leave.id}</td>
                                 <td>{leave.name}</td>
+                                <td>{leave.studentEmail}</td>
                                 <td>{leave.startdate}</td>
                                 <td>{leave.enddate}</td>
                                 <td>{leave.reason}</td>

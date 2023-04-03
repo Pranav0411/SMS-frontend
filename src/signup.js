@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 
 
+
 function Signup() {
 
 
@@ -57,8 +58,8 @@ function Signup() {
 
 
     return (
-        <Base>
-            <Row>
+        <Base >
+            <Row >
                 <Col sm={{ size: 6, offset: 3 }}>
                     <Card style={{
                         margin: '100px'

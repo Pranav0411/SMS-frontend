@@ -22,6 +22,7 @@ function Fetchfees() {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">STUDENT NAME</th>
+                        <th scope="col">STUDENT EMAIL</th>
                         <th scope="col">AMOUNT</th>
                         <th scope="col">PAYMENT ID</th>
                         <th scope="col">FEES TYPE</th>
@@ -38,6 +39,7 @@ function Fetchfees() {
 
                                 <td>{leave.id}</td>
                                 <td>{leave.name}</td>
+                                <td>{leave.studenEmail}</td>
                                 <td>{leave.amount}</td>
                                 <td>{leave.paymentid}</td>
                                 <td>{leave.feestype}</td>

@@ -1,6 +1,7 @@
 import { useEffect , useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 function Fetchusers() {
@@ -15,7 +16,7 @@ function Fetchusers() {
         if (confirm) {
 
             axios.delete('http://localhost:9011/api/user/delete/' + id).then(res => { window.location.reload(true); }).catch(err => console.log(err));
-        
+            toast.success("User Deleted Successfully .")
         }
 
     }

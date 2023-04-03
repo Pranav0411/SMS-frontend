@@ -21,8 +21,8 @@ function Fetchmessage() {
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">STUDENT</th>
-                        <th scope="col">TEACHER</th>
+                        <th scope="col">STUDENT EMAIL</th>
+                        <th scope="col">TEACHER EMAIL</th>
                         <th scope="col">MESSAGE</th>
                         
                     </tr>
@@ -35,8 +35,8 @@ function Fetchmessage() {
                             <tr key={leave.id}>
 
                                 <td>{leave.id}</td>
-                                <td>{leave.student}</td>
-                                <td>{leave.teacher}</td>
+                                <td>{leave.studentEmail}</td>
+                                <td>{leave.teacherEmail}</td>
                                 <td>{leave.message}</td>
                                 
                             </tr>

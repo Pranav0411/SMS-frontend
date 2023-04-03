@@ -2,6 +2,8 @@ import { Button, Container } from 'reactstrap';
 import Signup from './signup';
 import Login from './login';
 import Base from './base';
+
+
 import { useNavigate } from 'react-router-dom';
 import TeacherComp from './TeacherComp';
 const Home = () => {
@@ -23,7 +25,7 @@ const Home = () => {
     return (
 
         <Base>
-            <div margin="20px">
+            <div margin="20px" >
         
                 <Container className="text-center">
                     <Button color="dark" className="ms-2" onClick={HandleLogin} > Login </Button>
