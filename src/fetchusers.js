@@ -10,12 +10,12 @@ function Fetchusers() {
     const navigate = useNavigate();
     useEffect(() => { axios.get('http://localhost:9011/api/user/getall').then(res => SetData(res.data)).catch(err => console.log(err)) }, [])
 
-    const handleDelete = (id) => {
+    const handleDelete = (email) => {
 
         const confirm = window.confirm("Would you like to Delete ?");
         if (confirm) {
 
-            axios.delete('http://localhost:9011/api/user/delete/' + id).then(res => { window.location.reload(true); }).catch(err => console.log(err));
+            axios.delete('http://localhost:9011/api/user/delete/' + email).then(res => { window.location.reload(true); }).catch(err => console.log(err));
             toast.success("User Deleted Successfully .")
         }
 
@@ -54,8 +54,8 @@ function Fetchusers() {
                                     <td>{user.role}</td>
                                     <td>{user.subject}</td>
                                 <td>
-                                    <Link className='text-decoration-none btn btn-sm btn-success' to={`/update/${user.id}`} > Update </Link>
-                                    <button onClick={e => handleDelete(user.id)} className= 'btn btn-sm btn-success'>Delete</button>   
+                                    <Link className='text-decoration-none btn btn-sm btn-success' to={`/update/${user.email}`} > Update </Link>
+                                    <button onClick={e => handleDelete(user.email)} className='btn btn-sm btn-success'>Delete</button>   
 
                                     </td>
                                 </tr>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'reactstrap';
 import { Button, FormGroup, Label, Input, FormText, Card, CardBody, CardHeader, Container, Row, Col } from 'reactstrap';
 import Base from './base';
 import { useNavigate } from 'react-router-dom';
 import './buttons.css'
+import { useEffect } from 'react';
+import { getCurrentUser, loggedIn } from './loginFunctionalities';
+import { Link} from "react-router-dom";
 
 
 
@@ -13,6 +16,15 @@ function Student() {
 
 
     let navigate = useNavigate();
+
+    const [login, setLogin] = useState(false)
+    const [user, setUser] = useState(undefined)
+
+    useEffect(() => {
+        setLogin(loggedIn())
+        setUser(getCurrentUser())
+    }, [login])
+
 
     const HandleApplyLeave = () => {
         navigate("/applyleave");
@@ -38,7 +50,22 @@ function Student() {
         <Base>
             <div className="text-center" margin="20px">
 
-                <h1>Welcome to Student Profile</h1>
+                {
+                    login && (
+
+                        <>
+                            <h1>Welcome {user.name}</h1>
+                            <h5>STUDENT</h5>
+                            <h5>Email : {user.email}</h5>
+                            <Link className='text-decoration-none btn btn-sm btn-success' to={`/updatestudent/${user.email}`} > Update </Link>
+                        </>
+                        )
+
+                }
+
+                
+
+                
 
             </div>
             <div class="con">
@@ -46,7 +73,7 @@ function Student() {
                 <Container className="text-center" >
                     <Button color="dark" onClick={HandleApplyLeave}> Apply Leave </Button>
                     <Button color="dark" onClick={handlePayFess} id="btn"> Pay fees </Button>
-                    <Button color="dark" onClick={HandleSendMessage} id="btn"> Message Teacher </Button>
+                    <Button color="dark" onClick={HandleSendMessage} > Message Teacher </Button>
                 </Container>
             </div>
         </Base>

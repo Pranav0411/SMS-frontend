@@ -22,6 +22,7 @@ import Message from './Message';
 import Fetchmessage from './fetchmessage';
 import Fetchfees from './fetchfees';
 import Fees from './Fees';
+import UpdateStudent from './updateStudent';
 
 
 function App() {
@@ -40,12 +41,13 @@ function App() {
                 <Route path="/applyleave" element={<ApplyLeave />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/listusers" element={<ListUsers />} />
-                <Route path="/update/:id" element={<Update />}></Route>
+                <Route path="/update/:email" element={<Update />}></Route>
                 <Route path="/fetchusers" element={<Fetchusers />} />
                 <Route path="/message" element={<Message />} />
                 <Route path="/fetchmessage" element={<Fetchmessage />} />
                 <Route path="/fees" element={<Fees />} />
                 <Route path="/fetchfees" element={<Fetchfees />} />
+                <Route path="/updatestudent/:email" element={<UpdateStudent />}></Route>
                 
             </Routes>
 

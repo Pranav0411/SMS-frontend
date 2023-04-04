@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
+import { doLogin } from './loginFunctionalities';
 
 function Login() {
 
@@ -45,12 +46,14 @@ function Login() {
         }
 
 
-        loginUser(loginDetails).then((jwtTokenData) =>{
+        loginUser(loginDetails).then((data) =>{
 
             
             console.log("userLogin");
-            console.log(jwtTokenData);
-            Cookies.set("token", jwtTokenData);
+            console.log(data);
+            //Cookies.set("token", jwtTokenData);
+            doLogin(data, () => { console.log("Login details saved Successfully") })
+
 
             if (loginDetails.role === "ROLE_ADMIN") {
                 toast.success("Admin Login Successful");
@@ -61,7 +64,7 @@ function Login() {
                 navigate("/teacher");
             }
             else if (loginDetails.role === "ROLE_STUDENT") {
-                toast.success("Teacher Login Successful");
+                toast.success("Student Login Successful");
                 navigate("/student");
             }
 

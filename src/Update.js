@@ -10,16 +10,16 @@ import Service from "./service";
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Update() {
 
-    const { id } = useParams();
+    const { email } = useParams();
     const [values, setValues] = useState({
 
-        id: id,
+        email: email,
         name: '',
-        email: '',
         role: '',
         subject:''
 
@@ -27,8 +27,8 @@ function Update() {
 
     })
     useEffect(() => {
-        axios.get('http://localhost:9011/api/user/getbyid/' + id)
-            .then(res => { setValues({ ...values, name: res.data.name, email: res.data.email, role: res.data.role, subject: res.data.subject }) })
+        axios.get('http://localhost:9011/api/user/getbyEmail/' + email)
+            .then(res => { setValues({ ...values, name: res.data.name, role: res.data.role, subject: res.data.subject }) })
             .catch(err => console.log(err))
     }, [])
 
@@ -37,7 +37,10 @@ function Update() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        axios.put('http://localhost:9011/api/user/updateuser/' + id, values).then(res => { navigate('/admin') }).catch(err => console.log(err))
+        axios.put('http://localhost:9011/api/user/updateuserbyEmail/' + email, values).then(res => {
+            toast.success("Updated User Successfully . ")
+            navigate('/admin')
+        }).catch(err => console.log(err))
     }
 
     return (
